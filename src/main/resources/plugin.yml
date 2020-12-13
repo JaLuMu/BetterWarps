@@ -1,0 +1,4 @@
+name: BetterWarps
+version: @version@
+main: de.jalumu.betterwarps.BetterWarps
+api-version: 1.16
