@@ -1,4 +1,6 @@
-name: BetterWarps
+name: NeoWarps
 version: @version@
-main: de.jalumu.betterwarps.BetterWarps
+main: de.jalumu.neowarps.NeoWarps
 api-version: 1.16
+commands:
+  neowarps:
