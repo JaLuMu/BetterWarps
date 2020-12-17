@@ -7,7 +7,7 @@ import org.bukkit.command.CommandSender;
 
 import static org.bukkit.ChatColor.*;
 
-public class NeoWarps implements CommandExecutor {
+public class NeoWarpsCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
