@@ -9,7 +9,7 @@ public class WarpManager {
         if (warpName.contains(":")){
 
         }else {
-            NeoWarps.getInstance().getConfig().contains("warps.private." + player.getUniqueId())
+            NeoWarps.getInstance().getConfig().contains("warps.private." + player.getUniqueId());
         }
     }
 
