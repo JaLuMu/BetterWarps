@@ -1,6 +1,8 @@
 package de.jalumu.neowarps;
 
 import de.jalumu.neowarps.commands.NeoWarpsCommand;
+import de.jalumu.neowarps.commands.WarpCommand;
+import de.jalumu.neowarps.commands.WarpsCommand;
 import de.jalumu.neowarps.metrics.Metrics;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -17,6 +19,8 @@ public final class NeoWarps extends JavaPlugin {
         metrics = new Metrics(this,9638);
 
         this.getCommand("neowarps").setExecutor(new NeoWarpsCommand());
+        this.getCommand("warp").setExecutor(new WarpCommand());
+        this.getCommand("warps").setExecutor(new WarpsCommand());
     }
 
     @Override

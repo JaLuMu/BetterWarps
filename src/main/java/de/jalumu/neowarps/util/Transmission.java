@@ -64,7 +64,7 @@ public class Transmission {
      * @return the processed message which is sent
      */
     public String getTransmissionContent() {
-        return message.toString();
+        return ChatColor.translateAlternateColorCodes('&',message.toString());
     }
 
     public void send(CommandSender sender) {
