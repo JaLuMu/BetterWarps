@@ -3,7 +3,9 @@ package de.jalumu.neowarps;
 import de.jalumu.neowarps.commands.NeoWarpsCommand;
 import de.jalumu.neowarps.commands.WarpCommand;
 import de.jalumu.neowarps.commands.WarpsCommand;
+import de.jalumu.neowarps.listener.InventoryListener;
 import de.jalumu.neowarps.metrics.Metrics;
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class NeoWarps extends JavaPlugin {
@@ -21,6 +23,9 @@ public final class NeoWarps extends JavaPlugin {
         this.getCommand("neowarps").setExecutor(new NeoWarpsCommand());
         this.getCommand("warp").setExecutor(new WarpCommand());
         this.getCommand("warps").setExecutor(new WarpsCommand());
+
+        this.getServer().getPluginManager().registerEvents(new InventoryListener(),this);
+
     }
 
     @Override
