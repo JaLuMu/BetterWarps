@@ -20,10 +20,21 @@ repositories {
         name = 'sonatype'
         url = 'https://oss.sonatype.org/content/groups/public/'
     }
+    maven {
+        name = "vironlab"
+        url = "https://repo.vironlab.eu/repository/public/"
+    }
+    maven {
+        name = 'jitpack'
+        url = 'https://jitpack.io'
+    }
 }
 
 dependencies {
     compileOnly 'com.destroystokyo.paper:paper-api:1.16.4-R0.1-SNAPSHOT'
+    compileOnly 'eu.vironlab.simpleitemlib:SimpleItemLib:1.0.1'
+    compileOnly 'org.spigotmc:plugin-annotations:1.2.3-SNAPSHOT'
+    annotationProcessor 'org.spigotmc:plugin-annotations:1.2.3-SNAPSHOT'
 }
 
 tasks.withType(JavaCompile) {

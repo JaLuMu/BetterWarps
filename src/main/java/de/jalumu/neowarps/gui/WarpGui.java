@@ -34,4 +34,22 @@ public class WarpGui {
         player.openInventory(inventory);
     }
 
+    private static void openPrivateGui(Player player){
+        Inventory inventory = Bukkit.createInventory(player, 27,
+                new Transmission()
+                        .appendPluginPrefix().appendSpace()
+                        .color(GRAY).appendText("|").appendSpace()
+                        .color(RED).appendText("Private Warps")
+                        .getTransmissionContent()
+        );
+
+        for (int i = 0; i<=43; i++){
+            inventory.setItem(i,ItemHelper.getPlaceholder());
+        }
+
+
+        player.openInventory(inventory);
+    }
+
+
 }

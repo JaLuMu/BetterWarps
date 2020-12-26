@@ -7,24 +7,33 @@ import de.jalumu.neowarps.listener.InventoryListener;
 import de.jalumu.neowarps.metrics.Metrics;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.plugin.java.annotation.command.Command;
+import org.bukkit.plugin.java.annotation.plugin.Description;
+import org.bukkit.plugin.java.annotation.plugin.Plugin;
+import org.bukkit.plugin.java.annotation.plugin.Website;
+import org.bukkit.plugin.java.annotation.plugin.author.Author;
 
+@Plugin(name = "NeoWarps", version = "1.0")
+@Description(value = "A Better Minecraft 1.16 Warp Plugin")
+@Author(value = "JanLuca")
+@Author(value = "Infinity_dev")
+@Website(value = "https://github.com/JaLuMu/NeoWarps")
 public final class NeoWarps extends JavaPlugin {
 
     private static Metrics metrics;
 
     private static NeoWarps instance;
 
-
     @Override
     public void onEnable() {
         instance = this;
         metrics = new Metrics(this,9638);
 
-        this.getCommand("neowarps").setExecutor(new NeoWarpsCommand());
-        this.getCommand("warp").setExecutor(new WarpCommand());
-        this.getCommand("warps").setExecutor(new WarpsCommand());
+        getCommand("neowarps").setExecutor(new NeoWarpsCommand());
+        getCommand("warp").setExecutor(new WarpCommand());
+        getCommand("warps").setExecutor(new WarpsCommand());
 
-        this.getServer().getPluginManager().registerEvents(new InventoryListener(),this);
+        getServer().getPluginManager().registerEvents(new InventoryListener(),this);
 
     }
 

@@ -4,9 +4,11 @@ import de.jalumu.neowarps.util.Transmission;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.plugin.java.annotation.command.Commands;
 
 import static org.bukkit.ChatColor.*;
 
+@Commands(@org.bukkit.plugin.java.annotation.command.Command(name="neowarps",desc = "Shows some useful informations about the plugin"))
 public class NeoWarpsCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {

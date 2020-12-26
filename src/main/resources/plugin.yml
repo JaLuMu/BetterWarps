@@ -1,8 +1,0 @@
-name: NeoWarps
-version: @version@
-main: de.jalumu.neowarps.NeoWarps
-api-version: 1.16
-commands:
-  neowarps:
-  warp:
-  warps:
