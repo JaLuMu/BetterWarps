@@ -29,12 +29,12 @@ public class WarpGui {
 
         inventory.setItem(2,ItemHelper.getItemStack(Material.LIGHT_BLUE_STAINED_GLASS_PANE,"Server Warps"));
         inventory.setItem(4,ItemHelper.getItemStack(Material.YELLOW_STAINED_GLASS_PANE,"Public Warps"));
-        inventory.setItem(6,ItemHelper.getItemStack(Material.MAGENTA_STAINED_GLASS_PANE,"Private Warps"));
+        inventory.setItem(6,ItemUtil.getInstance().getPrivateWarps().getItem());
 
         player.openInventory(inventory);
     }
 
-    private static void openPrivateGui(Player player){
+    protected static void openPrivateGui(Player player){
         Inventory inventory = Bukkit.createInventory(player, 27,
                 new Transmission()
                         .appendPluginPrefix().appendSpace()
