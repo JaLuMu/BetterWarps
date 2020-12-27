@@ -16,7 +16,6 @@ class ItemUtil(val guiManager: GUIManager) {
         lateinit var instance: ItemUtil
     }
 
-
     val placeholder: SimpleItemStack
     val privateWarps: SimpleItemStack
     val sharedWarps: SimpleItemStack
@@ -64,4 +63,7 @@ class ItemUtil(val guiManager: GUIManager) {
             .setClickHandler { inventoryClickEvent: InventoryClickEvent -> guiManager.openPublicGui(inventoryClickEvent.whoClicked as Player) }
             .build()
     }
+
+
+
 }
