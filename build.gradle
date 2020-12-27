@@ -1,12 +1,17 @@
 import org.apache.tools.ant.filters.ReplaceTokens
 
-apply plugin: 'java'
+plugins {
+    id 'java'
+    id 'org.jetbrains.kotlin.jvm' version '1.4.2'
+}
 
 group = 'de.jalumu'
 version = '1.0-SNAPSHOT'
 
 sourceCompatibility = '1.8'
 targetCompatibility = '1.8'
+
+compileJava.dependsOn processResources
 
 repositories {
     mavenCentral()
@@ -31,6 +36,7 @@ repositories {
 dependencies {
     compileOnly 'com.destroystokyo.paper:paper-api:1.16.4-R0.1-SNAPSHOT'
     compileOnly 'eu.vironlab.simpleitemlib:SimpleItemLib:1.0.1'
+    compile 'org.jetbrains.kotlin:kotlin-stdlib:1.4.2'
 
     // ----- Annotation Processors -----
 
@@ -43,4 +49,15 @@ dependencies {
 
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
+}
+
+jar {
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
+processResources {
+    from(sourceSets.main.java.srcDirs) {
+        filter ReplaceTokens, tokens: [version: version]
+    }
 }
