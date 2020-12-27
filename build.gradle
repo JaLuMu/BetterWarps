@@ -8,8 +8,6 @@ version = '1.0-SNAPSHOT'
 sourceCompatibility = '1.8'
 targetCompatibility = '1.8'
 
-compileJava.dependsOn processResources
-
 repositories {
     mavenCentral()
     maven {
@@ -45,10 +43,4 @@ dependencies {
 
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
-}
-
-processResources {
-    from(sourceSets.main.java.srcDirs) {
-        filter ReplaceTokens, tokens: [version: version]
-    }
 }
