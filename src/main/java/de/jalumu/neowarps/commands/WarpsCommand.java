@@ -12,7 +12,7 @@ import org.bukkit.plugin.java.annotation.permission.Permission;
 import org.bukkit.plugin.java.annotation.permission.Permissions;
 
 @Commands(@org.bukkit.plugin.java.annotation.command.Command(name="warps",desc = "Shows the Warp Menu",permission = "neowarps.warps"))
-@Permissions(@Permission(name = "neowarps.warps",desc = "Provides access to the Warp Menu"))
+@Permissions(@Permission(name = "neowarps.warps",desc = "Provides access to the Warp Menu",defaultValue = PermissionDefault.TRUE))
 public class WarpsCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
