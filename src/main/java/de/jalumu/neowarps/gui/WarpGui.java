@@ -2,7 +2,6 @@ package de.jalumu.neowarps.gui;
 
 import de.jalumu.neowarps.util.Transmission;
 import org.bukkit.Bukkit;
-import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 
@@ -24,11 +23,11 @@ public class WarpGui {
         );
 
         for (int i = 0; i<=8; i++){
-            inventory.setItem(i,ItemHelper.getPlaceholder());
+            inventory.setItem(i,ItemUtil.getInstance().getPlaceholder().getItem());
         }
 
-        inventory.setItem(2,ItemHelper.getItemStack(Material.LIGHT_BLUE_STAINED_GLASS_PANE,"Server Warps"));
-        inventory.setItem(4,ItemHelper.getItemStack(Material.YELLOW_STAINED_GLASS_PANE,"Public Warps"));
+        inventory.setItem(2,ItemUtil.getInstance().getServerWarps().getItem());
+        inventory.setItem(4,ItemUtil.getInstance().getPublicWarps().getItem());
         inventory.setItem(6,ItemUtil.getInstance().getPrivateWarps().getItem());
 
         player.openInventory(inventory);
@@ -44,7 +43,41 @@ public class WarpGui {
         );
 
         for (int i = 0; i<=43; i++){
-            inventory.setItem(i,ItemHelper.getPlaceholder());
+            inventory.setItem(i,ItemUtil.getInstance().getPlaceholder().getItem());
+        }
+
+
+        player.openInventory(inventory);
+    }
+
+    protected static void openPublicGui(Player player){
+        Inventory inventory = Bukkit.createInventory(player, 27,
+                new Transmission()
+                        .appendPluginPrefix().appendSpace()
+                        .color(GRAY).appendText("|").appendSpace()
+                        .color(RED).appendText("Public Warps")
+                        .getTransmissionContent()
+        );
+
+        for (int i = 0; i<=43; i++){
+            inventory.setItem(i,ItemUtil.getInstance().getPlaceholder().getItem());
+        }
+
+
+        player.openInventory(inventory);
+    }
+
+    protected static void openServerGui(Player player){
+        Inventory inventory = Bukkit.createInventory(player, 27,
+                new Transmission()
+                        .appendPluginPrefix().appendSpace()
+                        .color(GRAY).appendText("|").appendSpace()
+                        .color(RED).appendText("Server Warps")
+                        .getTransmissionContent()
+        );
+
+        for (int i = 0; i<=43; i++){
+            inventory.setItem(i,ItemUtil.getInstance().getPlaceholder().getItem());
         }
 
 
