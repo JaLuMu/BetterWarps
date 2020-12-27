@@ -1,8 +1,7 @@
-import org.apache.tools.ant.filters.ReplaceTokens
-
 plugins {
     id 'java'
     id 'org.jetbrains.kotlin.jvm' version '1.4.20'
+    id "com.github.johnrengelman.shadow" version "5.2.0"
 }
 
 group = 'de.jalumu'
@@ -11,7 +10,7 @@ version = '1.0-SNAPSHOT'
 sourceCompatibility = '1.8'
 targetCompatibility = '1.8'
 
-compileJava.dependsOn processResources
+build.dependsOn shadowJar
 
 repositories {
     mavenCentral()
@@ -52,13 +51,18 @@ tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
 
-jar {
-    from {
-        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+compileKotlin {
+    kotlinOptions {
+        jvmTarget = "1.8"
     }
 }
-processResources {
-    from(sourceSets.main.java.srcDirs) {
-        filter ReplaceTokens, tokens: [version: version]
+
+compileTestKotlin {
+    kotlinOptions {
+        jvmTarget = "1.8"
     }
+}
+
+shadowJar {
+    configurations = [project.configurations.compile]
 }
