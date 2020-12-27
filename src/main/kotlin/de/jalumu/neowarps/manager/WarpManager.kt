@@ -15,33 +15,39 @@ import java.util.*
 
 class WarpManager(val plugin: NeoWarps) {
 
-    private val publicWarpFile: File = File("${plugin.dataFolder.path}/storage", "public_warps.json")
+    private val publicWarpFolder: File = File(plugin.dataFolder.absolutePath)
+    private val publicWarpFile: File = File(publicWarpFolder, "public_warps.json")
     var publicWarpData: WarpPublicData
     val GSON: Gson = GsonBuilder().serializeNulls().setPrettyPrinting().create()
 
     init {
         
         if (!publicWarpFile.exists()) {
+
             plugin.dataFolder.mkdirs()
+            publicWarpFolder.mkdirs()
             publicWarpFile.createNewFile()
-            val writer: FileWriter = FileWriter(publicWarpFile)
-            writer.write(GSON.toJson(WarpPublicData()))
-            writer.flush()
-            writer.close()
+
+            FileWriter(publicWarpFile).let {
+                it.write(GSON.toJson(WarpPublicData()))
+                it.flush()
+                it.close()
+            }
+
         }
         this.publicWarpData = GSON.fromJson(FileReader(publicWarpFile), WarpPublicData::class.java)
     }
 
     fun getWarps(owner: UUID): WarpUserData {
         val storageFile: File = File("${plugin.dataFolder.name}/storage", "$owner")
-        if (storageFile.exists()) {
-            return Gson().fromJson(FileReader(storageFile), WarpUserData::class.java)
-        }else {
+        return if (storageFile.exists()) {
+            Gson().fromJson(FileReader(storageFile), WarpUserData::class.java)
+        } else {
             val warpUserData: WarpUserData = WarpUserData(mutableMapOf(), mutableMapOf(), mutableMapOf())
             storageFile.createNewFile()
-            val writer: FileWriter = FileWriter(storageFile)
+            val writer = FileWriter(storageFile)
             writer.write(GSON.toJson(warpUserData))
-            return warpUserData
+            warpUserData
         }
     }
 

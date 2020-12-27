@@ -10,6 +10,8 @@ import de.jalumu.neowarps.metrics.Metrics;
 import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.plugin.java.annotation.dependency.Dependency;
+import org.bukkit.plugin.java.annotation.dependency.DependsOn;
 import org.bukkit.plugin.java.annotation.plugin.ApiVersion;
 import org.bukkit.plugin.java.annotation.plugin.Description;
 import org.bukkit.plugin.java.annotation.plugin.Plugin;
@@ -21,6 +23,7 @@ import org.bukkit.plugin.java.annotation.plugin.author.Author;
 @Author(value = "JanLuca")
 @Author(value = "Infinity_dev")
 @Website(value = "https://github.com/JaLuMu/NeoWarps")
+@Dependency(value = "SimpleItemLib")
 @ApiVersion(ApiVersion.Target.v1_15)
 @Getter
 public final class NeoWarps extends JavaPlugin {

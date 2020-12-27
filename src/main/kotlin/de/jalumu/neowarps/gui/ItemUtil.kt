@@ -40,7 +40,6 @@ class ItemUtil(val guiManager: GUIManager) {
                                 .transmissionContent
                 )
                 .setClickHandler { inventoryClickEvent: InventoryClickEvent ->
-                    inventoryClickEvent.isCancelled = true
                     guiManager.openPrivateGui(inventoryClickEvent.whoClicked as Player)
                 }
                 .build()
