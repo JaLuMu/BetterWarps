@@ -11,7 +11,7 @@ import org.bukkit.plugin.java.annotation.plugin.Plugin;
 import org.bukkit.plugin.java.annotation.plugin.Website;
 import org.bukkit.plugin.java.annotation.plugin.author.Author;
 
-@Plugin(name = "NeoWarps", version = "@version@")
+@Plugin(name = "NeoWarps", version = "1.0-SNAPSHOT")
 @Description(value = "A Better Minecraft 1.16 Warp Plugin")
 @Author(value = "JanLuca")
 @Author(value = "Infinity_dev")
