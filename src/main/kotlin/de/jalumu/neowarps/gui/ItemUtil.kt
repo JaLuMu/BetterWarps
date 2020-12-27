@@ -10,19 +10,12 @@ import org.bukkit.entity.Player
 import org.bukkit.event.inventory.InventoryClickEvent
 
 class ItemUtil(val guiManager: GUIManager) {
-
-    companion object {
-        @JvmStatic
-        lateinit var instance: ItemUtil
-    }
-
     val placeholder: SimpleItemStack
     val privateWarps: SimpleItemStack
     val sharedWarps: SimpleItemStack
     val publicWarps: SimpleItemStack
 
     init {
-        instance = this;
         placeholder = SimpleItemBuilder(Material.MAGENTA_STAINED_GLASS_PANE)
             .setDisplayName(
                 Transmission()
@@ -32,7 +25,7 @@ class ItemUtil(val guiManager: GUIManager) {
             )
             .setClickHandler { inventoryClickEvent: InventoryClickEvent ->
                 val player = inventoryClickEvent.whoClicked as Player
-                player.playSound(player.location, Sound.ENTITY_CAT_STRAY_AMBIENT, 1f, 1f)
+                player.playSound(player.location, Sound.ENTITY_CAT_AMBIENT, 1f, 1f)
             }
             .build()
         privateWarps = SimpleItemBuilder(Material.MAGENTA_STAINED_GLASS_PANE)

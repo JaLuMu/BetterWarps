@@ -1,53 +1,54 @@
-/**
- *   Copyright © 2020 | vironlab.eu | All Rights Reserved.
- *
- *      ___    _______                        ______         ______
- *      __ |  / /___(_)______________ _______ ___  / ______ ____  /_
- *      __ | / / __  / __  ___/_  __ \__  __ \__  /  _  __ `/__  __ \
- *      __ |/ /  _  /  _  /    / /_/ /_  / / /_  /___/ /_/ / _  /_/ /
- *      _____/   /_/   /_/     \____/ /_/ /_/ /_____/\__,_/  /_.___/
- *
- *    ____  _______     _______ _     ___  ____  __  __ _____ _   _ _____
- *   |  _ \| ____\ \   / / ____| |   / _ \|  _ \|  \/  | ____| \ | |_   _|
- *   | | | |  _|  \ \ / /|  _| | |  | | | | |_) | |\/| |  _| |  \| | | |
- *   | |_| | |___  \ V / | |___| |__| |_| |  __/| |  | | |___| |\  | | |
- *   |____/|_____|  \_/  |_____|_____\___/|_|   |_|  |_|_____|_| \_| |_|
- *
- *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
- *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
- *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
- *
- *   Contact:
- *
- *     Discordserver:   https://discord.gg/wvcX92VyEH
- *     Website:         https://vironlab.eu/
- *     Mail:            contact@vironlab.eu
- *
- */
-
 package de.jalumu.neowarps.config
 
 import org.bukkit.Location
 import java.util.*
 
-data class WarpConfiguration(val name: String, val location: Location, val representation: ItemRepresentation)
+class WarpConfiguration(
+    var warpName: String,
+    var warpLocation: Location,
+    var warpRepresentation: ItemRepresentation
+){
+    var name: String = warpName
+    var location: Location = warpLocation
+    var representation: ItemRepresentation = warpRepresentation
+}
 
-data class SharedWarpConfiguration(val whitelist: MutableList<UUID>, val name0: String, val location0: Location, val representation0: ItemRepresentation)
+class SharedWarpConfiguration(
+    var warpWhitelist: MutableList<UUID>,
+    var warpName: String,
+    var warpLocation: Location,
+    var warpRepresentation: ItemRepresentation
+) {
+    var whitelist: MutableList<UUID> = warpWhitelist
+    var name: String = warpName
+    var location: Location = warpLocation
+    var representation: ItemRepresentation = warpRepresentation
+}
 
-data class AccessibleWarpConfiguration(val name: String, val location: Location, val representation: ItemRepresentation, val owner: UUID)
+class AccessibleWarpConfiguration(
+    var warpName: String,
+    var warpLocation: Location,
+    var warpRepresentation: ItemRepresentation,
+    var warpOwner: UUID
+) {
+    var name: String = warpName
+    var location: Location = warpLocation
+    var representation: ItemRepresentation = warpRepresentation
+    var owner: UUID = warpOwner
+}
 
-data class WarpUserData(val privateWarps: MutableList<WarpConfiguration>, val sharedWarps: MutableList<SharedWarpConfiguration>, val canAccess: MutableList<WarpConfiguration>)
+class WarpUserData(
+    var privateWarpsList: MutableList<WarpConfiguration>,
+    var sharedWarpsList: MutableList<SharedWarpConfiguration>,
+    var canAccessList: MutableList<WarpConfiguration>
+) {
+    var privateWarps: MutableList<WarpConfiguration> = privateWarpsList
+    var sharedWarps: MutableList<SharedWarpConfiguration> = sharedWarpsList
+    var canAccess: MutableList<WarpConfiguration> = canAccessList
+}
 
-data class WarpPublicData(val warps: MutableList<WarpConfiguration>)
+class WarpPublicData {
+    var warps: MutableList<String> = mutableListOf()
+}
 
-data class ItemRepresentation(val material: String, val displayName: String, val lore: MutableList<String> = mutableListOf())
+class ItemRepresentation(var material: String, var displayName: String, var lore: MutableList<String> = mutableListOf())

@@ -2,7 +2,7 @@ import org.apache.tools.ant.filters.ReplaceTokens
 
 plugins {
     id 'java'
-    id 'org.jetbrains.kotlin.jvm' version '1.4.2'
+    id 'org.jetbrains.kotlin.jvm' version '1.4.20'
 }
 
 group = 'de.jalumu'
@@ -36,7 +36,8 @@ repositories {
 dependencies {
     compileOnly 'com.destroystokyo.paper:paper-api:1.16.4-R0.1-SNAPSHOT'
     compileOnly 'eu.vironlab.simpleitemlib:SimpleItemLib:1.0.1'
-    compile 'org.jetbrains.kotlin:kotlin-stdlib:1.4.2'
+    compile 'org.jetbrains.kotlin:kotlin-stdlib:1.4.20'
+    compile 'com.google.code.gson:gson:2.8.6'
 
     // ----- Annotation Processors -----
 

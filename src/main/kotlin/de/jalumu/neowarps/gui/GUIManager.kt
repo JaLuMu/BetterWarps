@@ -1,11 +1,12 @@
 package de.jalumu.neowarps.gui
 
+import de.jalumu.neowarps.NeoWarps
 import de.jalumu.neowarps.util.Transmission
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.entity.Player
 
-class GUIManager {
+class GUIManager(val plugin: NeoWarps) {
     fun openWarpGui(player: Player) {
         openMainGui(player)
     }
@@ -20,11 +21,11 @@ class GUIManager {
                 .transmissionContent
         )
         for (i in 0..8) {
-            inventory.setItem(i, ItemUtil.instance.placeholder.item)
+            inventory.setItem(i, plugin.itemUtil.placeholder.item)
         }
-        inventory.setItem(2, ItemUtil.instance.publicWarps.item)
-        inventory.setItem(4, ItemUtil.instance.sharedWarps.item)
-        inventory.setItem(6, ItemUtil.instance.privateWarps.item)
+        inventory.setItem(2, plugin.itemUtil.publicWarps.item)
+        inventory.setItem(4, plugin.itemUtil.sharedWarps.item)
+        inventory.setItem(6, plugin.itemUtil.privateWarps.item)
         player.openInventory(inventory)
     }
 
@@ -38,7 +39,7 @@ class GUIManager {
                 .transmissionContent
         )
         for (i in 0..43) {
-            inventory.setItem(i, ItemUtil.instance.placeholder.item)
+            inventory.setItem(i, plugin.itemUtil.placeholder.item)
         }
         player.openInventory(inventory)
     }
@@ -53,7 +54,7 @@ class GUIManager {
                 .transmissionContent
         )
         for (i in 0..43) {
-            inventory.setItem(i, ItemUtil.instance.placeholder.item)
+            inventory.setItem(i, plugin.itemUtil.placeholder.item)
         }
         player.openInventory(inventory)
     }
@@ -68,7 +69,7 @@ class GUIManager {
                 .transmissionContent
         )
         for (i in 0..43) {
-            inventory.setItem(i, ItemUtil.instance.placeholder.item)
+            inventory.setItem(i, plugin.itemUtil.placeholder.item)
         }
         player.openInventory(inventory)
     }
