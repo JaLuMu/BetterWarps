@@ -38,9 +38,18 @@ class GUIManager(val plugin: NeoWarps) {
                 .color(ChatColor.RED).appendText("Private Warps")
                 .transmissionContent
         )
-        for (i in 0..43) {
-            inventory.setItem(i, plugin.itemUtil.placeholder.item)
-        }
+        player.openInventory(inventory)
+    }
+
+    internal fun openSharedGui(player: Player) {
+        val inventory = Bukkit.createInventory(
+                player, 27,
+                Transmission()
+                        .appendPluginPrefix().appendSpace()
+                        .color(ChatColor.GRAY).appendText("|").appendSpace()
+                        .color(ChatColor.RED).appendText("Shared Warps")
+                        .transmissionContent
+        )
         player.openInventory(inventory)
     }
 
@@ -53,24 +62,7 @@ class GUIManager(val plugin: NeoWarps) {
                 .color(ChatColor.RED).appendText("Public Warps")
                 .transmissionContent
         )
-        for (i in 0..43) {
-            inventory.setItem(i, plugin.itemUtil.placeholder.item)
-        }
         player.openInventory(inventory)
     }
 
-    internal fun openServerGui(player: Player) {
-        val inventory = Bukkit.createInventory(
-            player, 27,
-            Transmission()
-                .appendPluginPrefix().appendSpace()
-                .color(ChatColor.GRAY).appendText("|").appendSpace()
-                .color(ChatColor.RED).appendText("Server Warps")
-                .transmissionContent
-        )
-        for (i in 0..43) {
-            inventory.setItem(i, plugin.itemUtil.placeholder.item)
-        }
-        player.openInventory(inventory)
-    }
 }
