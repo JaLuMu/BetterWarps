@@ -16,7 +16,7 @@ class ItemUtil(val guiManager: GUIManager) {
     val publicWarps: SimpleItemStack
 
     init {
-        placeholder = SimpleItemBuilder(Material.MAGENTA_STAINED_GLASS_PANE)
+        placeholder = SimpleItemBuilder(Material.LIGHT_GRAY_STAINED_GLASS_PANE)
             .setDisplayName(
                 Transmission()
                     .color(ChatColor.GRAY)

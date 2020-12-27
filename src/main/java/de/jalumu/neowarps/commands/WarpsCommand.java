@@ -16,7 +16,7 @@ import static de.jalumu.neowarps.util.CommandHelper.checkPlayer;
 public class WarpsCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        
+
         if (checkPlayer(sender)){
             NeoWarps.getInstance().getGuiManager().openMainGui((Player) sender);
             return true;
