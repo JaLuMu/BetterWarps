@@ -8,9 +8,9 @@ class WarpConfiguration(
     var warpLocation: Location,
     var warpRepresentation: ItemRepresentation
 ){
-    var name: String = warpName
-    var location: Location = warpLocation
-    var representation: ItemRepresentation = warpRepresentation
+    private var name: String = warpName
+    private var location: Location = warpLocation
+    private var representation: ItemRepresentation = warpRepresentation
 }
 
 class SharedWarpConfiguration(
@@ -19,10 +19,10 @@ class SharedWarpConfiguration(
     var warpLocation: Location,
     var warpRepresentation: ItemRepresentation
 ) {
-    var whitelist: MutableList<UUID> = warpWhitelist
-    var name: String = warpName
-    var location: Location = warpLocation
-    var representation: ItemRepresentation = warpRepresentation
+    private var whitelist: MutableList<UUID> = warpWhitelist
+    private var name: String = warpName
+    private var location: Location = warpLocation
+    private var representation: ItemRepresentation = warpRepresentation
 }
 
 class AccessibleWarpConfiguration(
@@ -31,24 +31,28 @@ class AccessibleWarpConfiguration(
     var warpRepresentation: ItemRepresentation,
     var warpOwner: UUID
 ) {
-    var name: String = warpName
-    var location: Location = warpLocation
-    var representation: ItemRepresentation = warpRepresentation
-    var owner: UUID = warpOwner
+    private var name: String = warpName
+    private var location: Location = warpLocation
+    private var representation: ItemRepresentation = warpRepresentation
+    private var owner: UUID = warpOwner
 }
 
 class WarpUserData(
-    var privateWarpsList: MutableList<WarpConfiguration>,
-    var sharedWarpsList: MutableList<SharedWarpConfiguration>,
-    var canAccessList: MutableList<WarpConfiguration>
+    var privateWarpsList: MutableMap<String, WarpConfiguration>,
+    var sharedWarpsList: MutableMap<String, SharedWarpConfiguration>,
+    var canAccessList: MutableMap<String, WarpConfiguration>
 ) {
-    var privateWarps: MutableList<WarpConfiguration> = privateWarpsList
-    var sharedWarps: MutableList<SharedWarpConfiguration> = sharedWarpsList
-    var canAccess: MutableList<WarpConfiguration> = canAccessList
+    private  var privateWarps: MutableMap<String, WarpConfiguration> = privateWarpsList
+    private var sharedWarps: MutableMap<String, SharedWarpConfiguration> = sharedWarpsList
+    private var canAccess: MutableMap<String, WarpConfiguration> = canAccessList
 }
 
 class WarpPublicData {
-    var warps: MutableList<String> = mutableListOf()
+    var warps: MutableMap<String, WarpConfiguration> = mutableMapOf()
 }
 
-class ItemRepresentation(var material: String, var displayName: String, var lore: MutableList<String> = mutableListOf())
+class ItemRepresentation(var representationMaterial: String, var representationDisplayName: String, var representationLore: MutableList<String> = mutableListOf()) {
+    private var material: String = representationMaterial
+    var displayName: String = representationDisplayName
+    private var lore: MutableList<String> = representationLore
+}
