@@ -52,6 +52,30 @@ class WarpManager(val plugin: NeoWarps) {
         writer.close()
     }
 
+    fun addToSharedWarp(warp: SharedWarpConfiguration, player: UUID): SharedWarpConfiguration {
+        val cfg: SharedWarpConfiguration = warp
+        if (!cfg.whitelist.contains(player)) {
+            cfg.whitelist.add(player)
+        }
+        val playerData: WarpUserData = getWarps(player)
+        playerData.canAccess.put(warp.name, WarpConfiguration(warp.name, warp.location, warp.representation))
+        update(player, playerData)
+        return cfg
+    }
+
+    fun shareWarp(warpName: String, owner: UUID, whitelist: MutableList<UUID>): SharedWarpConfiguration {
+        val data: WarpUserData = getWarps(owner)
+        if (data.privateWarps.keys.contains(warpName)) {
+            val warp: WarpConfiguration? = data.privateWarps.get(warpName)
+            val sharedWarp: SharedWarpConfiguration = SharedWarpConfiguration(whitelist, warp!!.name, warp.location, warp.representation)
+            data.sharedWarps.put(sharedWarp.name, sharedWarp)
+            update(owner, data)
+            return sharedWarp
+        }else {
+            throw WarpNotExistsException("The Warp $warpName from Player $owner does not exists")
+        }
+    }
+
     fun update(owner: UUID, warpUserData: WarpUserData) {
         val storageFile: File = File("${plugin.dataFolder.path}/storage", "$owner")
         if (!storageFile.exists()) {

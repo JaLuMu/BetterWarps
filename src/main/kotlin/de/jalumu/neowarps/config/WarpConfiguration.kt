@@ -1,58 +1,59 @@
 package de.jalumu.neowarps.config
 
 import org.bukkit.Location
+import org.bukkit.Material
 import java.util.*
 
 class WarpConfiguration(
-    var warpName: String,
-    var warpLocation: Location,
-    var warpRepresentation: ItemRepresentation
+    private var warpName: String,
+    private var warpLocation: Location,
+    private var warpRepresentation: ItemRepresentation
 ){
-    private var name: String = warpName
-    private var location: Location = warpLocation
-    private var representation: ItemRepresentation = warpRepresentation
+    var name: String = warpName
+    var location: Location = warpLocation
+    var representation: ItemRepresentation = warpRepresentation
 }
 
 class SharedWarpConfiguration(
-    var warpWhitelist: MutableList<UUID>,
-    var warpName: String,
-    var warpLocation: Location,
-    var warpRepresentation: ItemRepresentation
+    private var warpWhitelist: MutableList<UUID>,
+    private var warpName: String,
+    private var warpLocation: Location,
+    private var warpRepresentation: ItemRepresentation
 ) {
-    private var whitelist: MutableList<UUID> = warpWhitelist
-    private var name: String = warpName
-    private var location: Location = warpLocation
-    private var representation: ItemRepresentation = warpRepresentation
+    var whitelist: MutableList<UUID> = warpWhitelist
+    var name: String = warpName
+    var location: Location = warpLocation
+    var representation: ItemRepresentation = warpRepresentation
 }
 
 class AccessibleWarpConfiguration(
-    var warpName: String,
-    var warpLocation: Location,
-    var warpRepresentation: ItemRepresentation,
-    var warpOwner: UUID
+    private var warpName: String,
+    private var warpLocation: Location,
+    private var warpRepresentation: ItemRepresentation,
+    private var warpOwner: UUID
 ) {
-    private var name: String = warpName
-    private var location: Location = warpLocation
-    private var representation: ItemRepresentation = warpRepresentation
-    private var owner: UUID = warpOwner
+    var name: String = warpName
+    var location: Location = warpLocation
+    var representation: ItemRepresentation = warpRepresentation
+    var owner: UUID = warpOwner
 }
 
 class WarpUserData(
-    var privateWarpsList: MutableMap<String, WarpConfiguration>,
-    var sharedWarpsList: MutableMap<String, SharedWarpConfiguration>,
-    var canAccessList: MutableMap<String, WarpConfiguration>
+    private var privateWarpsList: MutableMap<String, WarpConfiguration>,
+    private var sharedWarpsList: MutableMap<String, SharedWarpConfiguration>,
+    private var canAccessList: MutableMap<String, WarpConfiguration>
 ) {
-    private  var privateWarps: MutableMap<String, WarpConfiguration> = privateWarpsList
-    private var sharedWarps: MutableMap<String, SharedWarpConfiguration> = sharedWarpsList
-    private var canAccess: MutableMap<String, WarpConfiguration> = canAccessList
+    var privateWarps: MutableMap<String, WarpConfiguration> = privateWarpsList
+    var sharedWarps: MutableMap<String, SharedWarpConfiguration> = sharedWarpsList
+    var canAccess: MutableMap<String, WarpConfiguration> = canAccessList
 }
 
 class WarpPublicData {
     var warps: MutableMap<String, WarpConfiguration> = mutableMapOf()
 }
 
-class ItemRepresentation(var representationMaterial: String, var representationDisplayName: String, var representationLore: MutableList<String> = mutableListOf()) {
-    private var material: String = representationMaterial
+class ItemRepresentation(var representationMaterial: Material, var representationDisplayName: String, var representationLore: MutableList<String> = mutableListOf()) {
+    private var material: Material =  representationMaterial
     var displayName: String = representationDisplayName
     private var lore: MutableList<String> = representationLore
 }
