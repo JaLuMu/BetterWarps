@@ -10,53 +10,48 @@ import org.bukkit.entity.Player
 import org.bukkit.event.inventory.InventoryClickEvent
 
 class ItemUtil(val guiManager: GUIManager) {
-    val placeholder: SimpleItemStack
-    val privateWarps: SimpleItemStack
-    val sharedWarps: SimpleItemStack
-    val publicWarps: SimpleItemStack
 
-    init {
-        placeholder = SimpleItemBuilder(Material.MAGENTA_STAINED_GLASS_PANE)
-            .setDisplayName(
-                Transmission()
-                    .color(ChatColor.GRAY)
-                    .appendText(" ")
-                    .transmissionContent
-            )
-            .setClickHandler { inventoryClickEvent: InventoryClickEvent ->
-                val player = inventoryClickEvent.whoClicked as Player
-                player.playSound(player.location, Sound.ENTITY_CAT_AMBIENT, 1f, 1f)
-            }
-            .build()
-        privateWarps = SimpleItemBuilder(Material.MAGENTA_STAINED_GLASS_PANE)
-            .setDisplayName(
-                Transmission()
-                    .color(ChatColor.LIGHT_PURPLE)
-                    .appendText("Private Warps")
-                    .transmissionContent
-            )
-            .setClickHandler { inventoryClickEvent: InventoryClickEvent -> guiManager.openPrivateGui(inventoryClickEvent.whoClicked as Player) }
-            .build()
-        sharedWarps = SimpleItemBuilder(Material.YELLOW_STAINED_GLASS_PANE)
-            .setDisplayName(
-                Transmission()
-                    .color(ChatColor.YELLOW)
-                    .appendText("Shared Warps")
-                    .transmissionContent
-            )
-            .setClickHandler { inventoryClickEvent: InventoryClickEvent -> guiManager.openPublicGui(inventoryClickEvent.whoClicked as Player) }
-            .build()
-        publicWarps = SimpleItemBuilder(Material.LIGHT_BLUE_STAINED_GLASS_PANE)
-            .setDisplayName(
-                Transmission()
-                    .color(ChatColor.BLUE)
-                    .appendText("Public Warps")
-                    .transmissionContent
-            )
-            .setClickHandler { inventoryClickEvent: InventoryClickEvent -> guiManager.openPublicGui(inventoryClickEvent.whoClicked as Player) }
-            .build()
-    }
+    val placeholder = SimpleItemBuilder(Material.MAGENTA_STAINED_GLASS_PANE)
+        .setDisplayName(
+            Transmission()
+                .color(ChatColor.GRAY)
+                .appendText(" ")
+                .transmissionContent
+        )
+        .setClickHandler { inventoryClickEvent: InventoryClickEvent ->
+            val player = inventoryClickEvent.whoClicked as Player
+            player.playSound(player.location, Sound.ENTITY_CAT_AMBIENT, 1f, 1f)
+        }
+        .build()
 
+    val privateWarps: SimpleItemStack = SimpleItemBuilder(Material.MAGENTA_STAINED_GLASS_PANE)
+        .setDisplayName(
+            Transmission()
+                .color(ChatColor.LIGHT_PURPLE)
+                .appendText("Private Warps")
+                .transmissionContent
+        )
+        .setClickHandler { inventoryClickEvent: InventoryClickEvent -> guiManager.openPrivateGui(inventoryClickEvent.whoClicked as Player) }
+        .build()
 
+    val sharedWarps: SimpleItemStack = SimpleItemBuilder(Material.YELLOW_STAINED_GLASS_PANE)
+        .setDisplayName(
+            Transmission()
+                .color(ChatColor.YELLOW)
+                .appendText("Shared Warps")
+                .transmissionContent
+        )
+        .setClickHandler { inventoryClickEvent: InventoryClickEvent -> guiManager.openPublicGui(inventoryClickEvent.whoClicked as Player) }
+        .build()
+
+    val publicWarps: SimpleItemStack = SimpleItemBuilder(Material.LIGHT_BLUE_STAINED_GLASS_PANE)
+        .setDisplayName(
+            Transmission()
+                .color(ChatColor.BLUE)
+                .appendText("Public Warps")
+                .transmissionContent
+        )
+        .setClickHandler { inventoryClickEvent: InventoryClickEvent -> guiManager.openPublicGui(inventoryClickEvent.whoClicked as Player) }
+        .build()
 
 }

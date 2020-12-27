@@ -14,15 +14,18 @@ class WarpManager(val plugin: NeoWarps) {
     var warpPublicData: WarpPublicData?
 
     init {
+
         if (!publicWarpFile.exists()) {
             plugin.dataFolder.mkdirs()
             publicWarpFile.createNewFile()
-            val writer: FileWriter = FileWriter(publicWarpFile)
+            val writer = FileWriter(publicWarpFile)
             writer.write(GsonBuilder().setPrettyPrinting().create().toJson(WarpPublicData()))
             writer.flush()
             writer.close()
         }
+
         this.warpPublicData = Gson().fromJson(FileReader(publicWarpFile), WarpPublicData::class.java)
+
     }
 
 }

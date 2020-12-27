@@ -11,13 +11,13 @@ import org.bukkit.plugin.java.annotation.permission.Permissions;
 
 import static de.jalumu.neowarps.util.CommandHelper.checkPlayer;
 
-@Commands(@org.bukkit.plugin.java.annotation.command.Command(name="warps",desc = "Shows the Warp Menu",permission = "neowarps.warps"))
-@Permissions(@Permission(name = "neowarps.warps",desc = "Provides access to the Warp Menu"))
+@Commands(@org.bukkit.plugin.java.annotation.command.Command(name = "warps", desc = "Shows the Warp Menu", permission = "neowarps.warps"))
+@Permissions(@Permission(name = "neowarps.warps", desc = "Provides access to the Warp Menu"))
 public class WarpsCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        
-        if (checkPlayer(sender)){
+
+        if (checkPlayer(sender)) {
             NeoWarps.getInstance().getGuiManager().openMainGui((Player) sender);
             return true;
         }

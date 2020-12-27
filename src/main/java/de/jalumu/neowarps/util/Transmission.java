@@ -13,7 +13,7 @@ public class Transmission {
     private StringBuilder message;
 
 
-    public Transmission(){
+    public Transmission() {
         this.message = new StringBuilder();
     }
 
@@ -55,7 +55,7 @@ public class Transmission {
         return this;
     }
 
-    public Transmission appendText(String text){
+    public Transmission appendText(String text) {
         message.append(text);
         return this;
     }
@@ -64,7 +64,7 @@ public class Transmission {
      * @return the processed message which is sent
      */
     public String getTransmissionContent() {
-        return ChatColor.translateAlternateColorCodes('&',message.toString());
+        return ChatColor.translateAlternateColorCodes('&', message.toString());
     }
 
     public void send(CommandSender sender) {

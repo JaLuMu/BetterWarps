@@ -38,7 +38,7 @@ public final class NeoWarps extends JavaPlugin {
     @Override
     public void onEnable() {
         instance = this;
-        metrics = new Metrics(this,9638);
+        metrics = new Metrics(this, 9638);
         this.guiManager = new GUIManager(this);
         this.itemUtil = new ItemUtil(this.guiManager);
         this.warpManager = new WarpManager(this);

@@ -7,7 +7,7 @@ class WarpConfiguration(
     var warpName: String,
     var warpLocation: Location,
     var warpRepresentation: ItemRepresentation
-){
+) {
     var name: String = warpName
     var location: Location = warpLocation
     var representation: ItemRepresentation = warpRepresentation

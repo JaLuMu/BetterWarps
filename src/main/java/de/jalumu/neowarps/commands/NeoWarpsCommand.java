@@ -8,7 +8,7 @@ import org.bukkit.plugin.java.annotation.command.Commands;
 
 import static org.bukkit.ChatColor.*;
 
-@Commands(@org.bukkit.plugin.java.annotation.command.Command(name="neowarps",desc = "Shows some useful informations about the plugin"))
+@Commands(@org.bukkit.plugin.java.annotation.command.Command(name = "neowarps", desc = "Shows some useful informations about the plugin"))
 public class NeoWarpsCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {

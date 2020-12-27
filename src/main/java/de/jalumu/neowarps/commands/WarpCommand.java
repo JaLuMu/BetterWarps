@@ -12,15 +12,15 @@ import org.bukkit.plugin.java.annotation.permission.Permissions;
 import static de.jalumu.neowarps.util.CommandHelper.checkArgs;
 import static de.jalumu.neowarps.util.CommandHelper.checkPlayer;
 
-@Commands(@org.bukkit.plugin.java.annotation.command.Command(name="warp",desc = "Warp to a location directly",permission = "neowarps.warp"))
-@Permissions(@Permission(name = "neowarps.warp",desc = "Provides access to direct Warps",defaultValue = PermissionDefault.TRUE))
+@Commands(@org.bukkit.plugin.java.annotation.command.Command(name = "warp", desc = "Warp to a location directly", permission = "neowarps.warp"))
+@Permissions(@Permission(name = "neowarps.warp", desc = "Provides access to direct Warps", defaultValue = PermissionDefault.TRUE))
 public class WarpCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (CommandHelper.isPlayer(sender)){
+        if (CommandHelper.isPlayer(sender)) {
 
-            if (checkPlayer(sender) && checkArgs(args,1)){
+            if (checkPlayer(sender) && checkArgs(args, 1)) {
 
             }
 
