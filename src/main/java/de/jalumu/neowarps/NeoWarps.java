@@ -3,6 +3,7 @@ package de.jalumu.neowarps;
 import de.jalumu.neowarps.commands.NeoWarpsCommand;
 import de.jalumu.neowarps.commands.WarpCommand;
 import de.jalumu.neowarps.commands.WarpsCommand;
+import de.jalumu.neowarps.gui.GUIManager;
 import de.jalumu.neowarps.metrics.Metrics;
 import lombok.Getter;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -16,17 +17,19 @@ import org.bukkit.plugin.java.annotation.plugin.author.Author;
 @Author(value = "JanLuca")
 @Author(value = "Infinity_dev")
 @Website(value = "https://github.com/JaLuMu/NeoWarps")
+@Getter
 public final class NeoWarps extends JavaPlugin {
 
     @Getter
     private static NeoWarps instance;
-    @Getter
-    private static Metrics metrics;
+    private Metrics metrics;
+    private GUIManager guiManager;
 
     @Override
     public void onEnable() {
         instance = this;
         metrics = new Metrics(this,9638);
+        guiManager = new GUIManager();
 
         getCommand("neowarps").setExecutor(new NeoWarpsCommand());
         getCommand("warp").setExecutor(new WarpCommand());
