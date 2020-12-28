@@ -156,7 +156,8 @@ class GUIManager(val plugin: NeoWarps) {
                             ""
                     )
 
-
+                    it.itemMeta = meta
+                    it
                 }
         )
 
