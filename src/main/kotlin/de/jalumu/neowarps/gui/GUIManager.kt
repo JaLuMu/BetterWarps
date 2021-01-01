@@ -1,6 +1,7 @@
 package de.jalumu.neowarps.gui
 
 import de.jalumu.neowarps.NeoWarps
+import de.jalumu.neowarps.manager.WarpManager
 import de.jalumu.neowarps.util.Transmission
 import eu.vironlab.simpleitemlib.SimpleItemStack
 import org.bukkit.Bukkit
@@ -71,7 +72,7 @@ class GUIManager(val plugin: NeoWarps) {
         player.openInventory(inventory)
     }
 
-    fun generateHybridGUI(level: HybridLevel, player: Player, page: Int = 1): Inventory {
+    fun generateHybridGUI(level: HybridLevel, player: Player, page: Int = 1, sortFilter: SortType = SortType.NOTHING): Inventory {
 
         val inventory = Bukkit.createInventory(
                 player,
@@ -110,7 +111,7 @@ class GUIManager(val plugin: NeoWarps) {
                 }
         ).let {
             it.setClickHandler {
-                player.openInventory(generateHybridGUI(level, player, page-1))
+                player.openInventory(generateHybridGUI(level, player, page-1, sortFilter))
             }
         }
 
@@ -136,7 +137,7 @@ class GUIManager(val plugin: NeoWarps) {
                 }
         ).let {
             it.setClickHandler {
-                player.openInventory(generateHybridGUI(level, player, page+1))
+                player.openInventory(generateHybridGUI(level, player, page+1, sortFilter))
             }
         }
 
@@ -151,23 +152,60 @@ class GUIManager(val plugin: NeoWarps) {
                             .transmissionContent
                     )
 
-                    meta.lore = listOf(
-                            " ",
-                            ""
-                    )
+                    val lore = arrayListOf(" ", " ")
+
+                    SortType.values().forEach { type ->
+
+                        val accentColor = if (type == sortFilter)
+                            ChatColor.GREEN
+                        else
+                            ChatColor.GRAY
+
+                        lore.add(lore.size-2, "$accentColor> ${type.displayName}")
+
+                    }
 
                     it.itemMeta = meta
                     it
                 }
-        )
-
-        for (x in 0 until inventory.size) {
-
-            inventory.setItem(x, ItemUtil(this@GUIManager).placeholder.item)
-
+        ).let {
+            it.setClickHandler {
+                player.openInventory(generateHybridGUI(
+                    level = level,
+                    player = player,
+                    page = page,
+                    sortFilter = SortType.values().elementAtOrNull(SortType.values().indexOf(sortFilter)+1) ?: SortType.values().first()
+                ))
+            }
         }
 
+        for (x in 0 until inventory.size) {
+            inventory.setItem(x, ItemUtil(this@GUIManager).placeholder.item)
+        }
 
+        for ((index, control) in listOf(buttonNext, buttonSort, buttonPrev).withIndex()) {
+            inventory.setItem(inventory.size-1-(index*3), control.item)
+        }
+
+        for (x in 9..inventory.size-10) {
+            val containerSize = inventory.size-10-9
+            val storePos = x+((page-1)*containerSize)
+
+            if ((containerSize*page) < inventory.size) {
+                inventory.setItem(x, WarpManager(NeoWarps.getInstance()).getWarps(player.uniqueId).canAccess.values.toList()[storePos].let {
+                    val representation = it.representation
+                    val item = ItemStack(representation.representationMaterial)
+                    val meta = item.itemMeta
+
+                    meta.setDisplayName(representation.displayName)
+                    meta.lore = representation.representationLore
+
+                    item.itemMeta = meta
+                    item
+                })
+            }
+
+        }
 
         return inventory
     }
@@ -177,15 +215,22 @@ class GUIManager(val plugin: NeoWarps) {
 
         val displayName: String
             get() = when (this) {
-                PUBLIC -> {
-                    "Public"
-                }
-                SHARED -> {
-                    "Shared"
-                }
-                PRIVATE -> {
-                    "Private"
-                }
+                PUBLIC -> "Public"
+                SHARED -> "Shared"
+                PRIVATE -> "Private"
+            }
+
+    }
+
+    enum class SortType {
+        NOTHING, LEVEL, NAME, OWNER;
+
+        val displayName: String
+            get() = when (this) {
+                NOTHING -> "Nothing"
+                LEVEL -> "Access"
+                NAME -> "Name"
+                OWNER -> "Owner"
             }
 
     }
