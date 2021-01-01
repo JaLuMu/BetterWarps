@@ -51,6 +51,7 @@ public class CreateWarpCommand implements CommandExecutor {
                                             .color(GRAY).appendText("Z:").appendSpace().color(AQUA).appendText(String.valueOf(location.getBlockZ()))
                                             .getTransmissionContent()
                             ))));
+            return true;
         }
 
         return false;
