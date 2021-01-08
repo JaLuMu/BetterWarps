@@ -16,9 +16,7 @@ import org.bukkit.plugin.java.annotation.command.Commands;
 import org.bukkit.plugin.java.annotation.permission.Permission;
 import org.bukkit.plugin.java.annotation.permission.Permissions;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 import static de.jalumu.neowarps.util.CommandHelper.checkArgs;
 import static de.jalumu.neowarps.util.CommandHelper.checkPlayer;

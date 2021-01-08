@@ -9,7 +9,6 @@ version = '1.0-SNAPSHOT'
 
 sourceCompatibility = '1.8'
 targetCompatibility = '1.8'
-
 build.dependsOn shadowJar
 
 repositories {
@@ -36,7 +35,7 @@ dependencies {
     compileOnly 'com.destroystokyo.paper:paper-api:1.16.4-R0.1-SNAPSHOT'
     compileOnly 'eu.vironlab.simpleitemlib:SimpleItemLib:1.0.1'
     compile 'org.jetbrains.kotlin:kotlin-stdlib:1.4.20'
-    compile 'com.google.code.gson:gson:2.8.6'
+    //compile 'com.google.code.gson:gson:2.8.6'
 
     // ----- Annotation Processors -----
 

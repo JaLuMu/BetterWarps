@@ -192,7 +192,7 @@ class GUIManager(val plugin: NeoWarps) {
             val storePos = x+((page-1)*containerSize)
 
             if ((containerSize*page) < inventory.size) {
-                inventory.setItem(x, WarpManager(NeoWarps.getInstance()).getWarps(player.uniqueId).canAccess.values.toList()[storePos].let {
+                inventory.setItem(x, NeoWarps.getInstance().warpManager.getWarps(player.uniqueId).canAccess.values.toList()[storePos].let {
                     val representation = it.representation
                     val item = ItemStack(representation.representationMaterial)
                     val meta = item.itemMeta

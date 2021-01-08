@@ -17,11 +17,11 @@ class WarpManager(val plugin: NeoWarps) {
 
     private val publicWarpFolder: File = File(plugin.dataFolder.absolutePath)
     private val publicWarpFile: File = File(publicWarpFolder, "public_warps.json")
-    var publicWarpData: WarpPublicData
+    var publicWarpData: WarpPublicData?
     val GSON: Gson
 
     init {
-        GSON = GsonBuilder().serializeNulls().setPrettyPrinting().create()
+        GSON = GsonBuilder().setPrettyPrinting().create()
         if (!publicWarpFile.exists()) {
 
             plugin.dataFolder.mkdirs()
@@ -36,7 +36,7 @@ class WarpManager(val plugin: NeoWarps) {
 
         }
 
-        this.publicWarpData = GSON.fromJson(FileReader(publicWarpFile), WarpPublicData::class.java)
+        this.publicWarpData = GSON.fromJson(FileReader(publicWarpFile), WarpPublicData().javaClass)
     }
 
     fun getWarps(owner: UUID): WarpUserData {

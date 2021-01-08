@@ -7,11 +7,9 @@ import de.jalumu.neowarps.gui.GUIManager;
 import de.jalumu.neowarps.gui.ItemUtil;
 import de.jalumu.neowarps.manager.WarpManager;
 import de.jalumu.neowarps.metrics.Metrics;
-import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.plugin.java.annotation.dependency.Dependency;
-import org.bukkit.plugin.java.annotation.dependency.DependsOn;
 import org.bukkit.plugin.java.annotation.plugin.ApiVersion;
 import org.bukkit.plugin.java.annotation.plugin.Description;
 import org.bukkit.plugin.java.annotation.plugin.Plugin;
@@ -25,16 +23,17 @@ import org.bukkit.plugin.java.annotation.plugin.author.Author;
 @Website(value = "https://github.com/JaLuMu/NeoWarps")
 @Dependency(value = "SimpleItemLib")
 @ApiVersion(ApiVersion.Target.v1_15)
-@Getter
 public final class NeoWarps extends JavaPlugin {
 
-    @Getter
     private static NeoWarps instance;
-    @Getter
-    private static Metrics metrics;
-    public WarpManager warpManager;
-    public ItemUtil itemUtil;
-    public GUIManager guiManager;
+    private Metrics metrics;
+    private WarpManager warpManager;
+    private ItemUtil itemUtil;
+    private GUIManager guiManager;
+
+    public static NeoWarps getInstance() {
+        return NeoWarps.instance;
+    }
 
 
     @Override
@@ -63,4 +62,19 @@ public final class NeoWarps extends JavaPlugin {
         // Plugin shutdown logic
     }
 
+    public Metrics getMetrics() {
+        return this.metrics;
+    }
+
+    public WarpManager getWarpManager() {
+        return this.warpManager;
+    }
+
+    public ItemUtil getItemUtil() {
+        return this.itemUtil;
+    }
+
+    public GUIManager getGuiManager() {
+        return this.guiManager;
+    }
 }

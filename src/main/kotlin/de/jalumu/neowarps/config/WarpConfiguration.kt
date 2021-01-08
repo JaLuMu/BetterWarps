@@ -2,7 +2,9 @@ package de.jalumu.neowarps.config
 
 import org.bukkit.Location
 import org.bukkit.Material
+import java.io.Serializable
 import java.util.*
+import kotlin.collections.HashMap
 
 class WarpConfiguration(
     private var warpName: String,
@@ -48,8 +50,8 @@ class WarpUserData(
     var canAccess: MutableMap<String, WarpConfiguration> = canAccessList
 }
 
-class WarpPublicData {
-    var warps: MutableMap<String, WarpConfiguration> = mutableMapOf()
+class WarpPublicData : Serializable{
+    var warps: MutableMap<String, WarpConfiguration> = HashMap<String, WarpConfiguration>()
 }
 
 class ItemRepresentation(var representationMaterial: Material, var representationDisplayName: String, var representationLore: MutableList<String> = mutableListOf()) {
