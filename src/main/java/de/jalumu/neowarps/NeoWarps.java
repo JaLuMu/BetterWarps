@@ -1,8 +1,6 @@
 package de.jalumu.neowarps;
 
-import de.jalumu.neowarps.commands.NeoWarpsCommand;
-import de.jalumu.neowarps.commands.WarpCommand;
-import de.jalumu.neowarps.commands.WarpsCommand;
+import de.jalumu.neowarps.commands.*;
 import de.jalumu.neowarps.gui.GUIManager;
 import de.jalumu.neowarps.gui.ItemUtil;
 import de.jalumu.neowarps.manager.WarpManager;
@@ -47,6 +45,8 @@ public final class NeoWarps extends JavaPlugin {
         getCommand("neowarps").setExecutor(new NeoWarpsCommand());
         getCommand("warp").setExecutor(new WarpCommand());
         getCommand("warps").setExecutor(new WarpsCommand());
+        getCommand("createWarp").setExecutor(new CreateWarpCommand());
+        getCommand("createPublicWarp").setExecutor(new CreatePublicWarpCommand());
 
         Bukkit.getConsoleSender().sendMessage("§a     __               __    __                          \n" +
                 "§a  /\\ \\ \\  ___   ___  / / /\\ \\ \\  __ _  _ __  _ __   ___ \n" +

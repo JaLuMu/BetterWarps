@@ -1,7 +1,6 @@
 package de.jalumu.neowarps.gui
 
 import de.jalumu.neowarps.NeoWarps
-import de.jalumu.neowarps.manager.WarpManager
 import de.jalumu.neowarps.util.Transmission
 import eu.vironlab.simpleitemlib.SimpleItemStack
 import org.bukkit.Bukkit
@@ -191,6 +190,7 @@ class GUIManager(val plugin: NeoWarps) {
             val containerSize = inventory.size-10-9
             val storePos = x+((page-1)*containerSize)
 
+            /**
             if ((containerSize*page) < inventory.size) {
                 inventory.setItem(x, NeoWarps.getInstance().warpManager.getWarps(player.uniqueId).canAccess.values.toList()[storePos].let {
                     val representation = it.representation
@@ -204,6 +204,7 @@ class GUIManager(val plugin: NeoWarps) {
                     item
                 })
             }
+            */
 
         }
 

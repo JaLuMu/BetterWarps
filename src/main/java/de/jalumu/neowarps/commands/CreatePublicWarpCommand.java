@@ -1,5 +1,6 @@
 package de.jalumu.neowarps.commands;
 
+
 import de.jalumu.neowarps.NeoWarps;
 import de.jalumu.neowarps.util.Transmission;
 import org.bukkit.Location;
@@ -17,21 +18,23 @@ import java.util.Arrays;
 
 import static de.jalumu.neowarps.util.CommandHelper.checkArgs;
 import static de.jalumu.neowarps.util.CommandHelper.checkPlayer;
-import static org.bukkit.ChatColor.*;
+import static org.bukkit.ChatColor.AQUA;
+import static org.bukkit.ChatColor.GRAY;
 
-@Commands(@org.bukkit.plugin.java.annotation.command.Command(name = "createWarp", desc = "Creates a new Private Warp", aliases = {"cwarp"}, permission = "neowarps.private.create"))
-@Permissions(@Permission(name = "neowarps.private.create", desc = "Allows to create new private Warps", defaultValue = PermissionDefault.TRUE))
-public class CreateWarpCommand implements CommandExecutor {
+@Commands(@org.bukkit.plugin.java.annotation.command.Command(name = "createPublicWarp", desc = "Creates a new Public Warp", aliases = {"cpwarp"}, permission = "neowarps.public.create"))
+@Permissions(@Permission(name = "neowarps.public.create", desc = "Allows to create new public Warps", defaultValue = PermissionDefault.OP))
+public class CreatePublicWarpCommand implements CommandExecutor {
+
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
         if (checkPlayer(sender) && checkArgs(args, 2)) {
             Player player = (Player) sender;
             Location location = player.getLocation();
-            
+
+
             return true;
         }
-
         return false;
     }
 }
